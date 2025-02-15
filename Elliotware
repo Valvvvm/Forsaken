@@ -523,31 +523,3 @@ local Toggle = Tab:Toggle({
         end
     end,
 })
-local Tab = Window:Tab({
-    Title = "Esp",
-    Icon = "folder", -- lucide or rbxassetid
-})
-local Section = Tab:Section({ 
-    Title = "Esos Working",
-    TextXAlignment = "Left",
-    TextSize = 17, -- Default Size
-})
-local Toggle = Tab:Toggle({
-    Title = "🔦 Highlight Killers",
-    Desc = "Toggle to highlight or remove highlights from killers.",
-    Value = false,
-    Callback = function(state)
-local function updateKillerHighlight(state)
-    if not state then
-        for _, model in pairs(workspace.Players:GetChildren()) do
-            if model:IsA("Model") then
-                for _, part in pairs(model:GetChildren()) do
-                    local highlight = part:FindFirstChildOfClass("Highlight")
-                    if highlight then highlight:Destroy() end
-                end
-            end
-        end
-        return
-    end
-
-    local function applyHighligh
